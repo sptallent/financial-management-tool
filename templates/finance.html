@@ -1,0 +1,79 @@
+{% load static %}<!DOCTYPE html>
+<title>View Your Finances</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<body>
+    <div class="topnav">
+        <input type="text" placeholder="Search..">
+        <button type="submit"><i class="fa fa-search"></i>Submit</button>
+    </div> 
+
+    <div class="container">
+    <ol class="breadcrumb my-4">
+    <li class="breadcrumb-item active">Boards</li>
+    </ol>
+    <h1>Yay, spreadsheets!</h1>
+    <table border=1>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Income</th>
+                   {% for income in incomes %} 
+                    <tbody>
+                    <tr>
+                        <td>
+                            {{ income.amount }} <br>
+                            <small class="text-muted d-block">{{ income.date_earned }}</small>
+                        </td>
+                    </tr> 
+                    </tbody>
+                    {% endfor %}
+                <th>Expenses</th>
+                    {% for expense in expenses %} 
+                    <tbody>
+                    <tr>
+                        <td>
+                            {{ expense.amount }} <br>
+                            <small class="text-muted d-block">{{ expense.date_spent }}</small>
+                        </td>
+                    </tr> 
+                    </tbody>
+                    {% endfor %}
+                <th>Debts</th>
+                    {% for debt in debts %} 
+                    <tbody>
+                    <tr>
+                        <td>
+                            {{ debt.amount }} <br>
+                            <small class="text-muted d-block">{{ debt.date_acquired }}</small>
+                        </td>
+                    </tr> 
+                    </tbody>
+                    {% endfor %}
+                <th>Investments</th>
+                    <tbody>
+                    {% for investment in investments %} 
+                    <tr>
+                        <td>
+                            {{ investment.amount }} <br>
+                            <small class="text-muted d-block">{{ investment.date_acquired }}</small>
+                        </td>
+                        <td>
+                            <button action = "invest_bar">View Returns</button>
+                        </td>
+                    </tr> 
+                    </tbody>
+                    {% endfor %}
+                    <tr>
+                        <button action = "spending_bar">View Expenses</button>
+                    </tr>
+                    <tr>
+                        <button action = "income_plot">View Income</button>
+                    </tr>
+            </tr>
+        </thead>
+    </table>
+    </div>
+
+  </body>
+</html>
+</html>

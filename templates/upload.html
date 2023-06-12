@@ -1,0 +1,18 @@
+<html>
+<title>Upload a File</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<head>Upload a File</head>
+
+<body>
+<h2>Select file to upload</h2>
+<form method ="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="file" name="myfile">
+	<button type="submit">Upload</button>
+	
+	{% if uploaded_file_url %}
+	<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+	{% endif %}
+	<p><a href="{{ home.html }}">Return to home</a></p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% load static %}<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+  <body>
+    <div class="container">
+    <ol class="breadcrumb my-4">
+    <li class="breadcrumb-item active">Boards</li>
+    </ol>
+    <h1>Welcome!</h1>
+    <table border=1>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Board</th>
+                <th>Write</th>
+                <th>Posts</th>
+                <th>Finances</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for board in boards %}
+                <tr>
+                    <td>
+                        {{ board.name }} <br>
+                        <small class="text-muted d-block">{{ board.description }}</small>
+                    </td>
+
+                    <td class="align-middle">
+                        <a class="btn btn-primary" href="new_post?name={{ board.name }}">Write Post</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="post?name={{ board.name }}">View Posts</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="finance">View Finances</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                     <a class="btn btn-primary" href="upload">Upload File</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+  </body>
+</html>

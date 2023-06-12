@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Incomes</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<div class="container">
+    <ol class="breadcrumb my-4">
+    <li class="breadcrumb-item active">Posts</li>
+    </ol>
+    <h1>Posts</h1>
+    <table border=1>
+        <thead class="thead-inverse">
+            <tr>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Date Earned</th>
+                <tbody>
+                    {% for income in incomes %}
+                        <tr>
+                            <td>
+                                {{ income.amount }} <br>
+                            </td>
+                            <td>
+                                {{ income.inType }} <br>
+                            </td>
+                            <td>
+                                {{ income.date_earned }} <br>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </tr>
+        </thead>
+        </table>
+        </div>
+</html>
+
+

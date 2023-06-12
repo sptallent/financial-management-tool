@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Posts</title>
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<style>
+
+
+</style>
+</head>
+    <body>
+        <h1>{{b_name}} Posts</h1>
+        <h2>
+            {% for post in posts %}
+			    {% if b_name == post.board.name %}
+                <div id="message">
+                    {{post.created_by}}: {{ post.message }}
+                </div>
+                {% for comment in comments %}
+                    {% if comment.post == post%}
+                        <div>
+                            {{ comment.message }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+				{% endif %}
+            {% endfor %}
+        </h2>
+    </body>
+</html>
